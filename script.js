@@ -1,103 +1,64 @@
-function computerPlay() {
+let playerSelection;
+let computerSelection;
+let playerScore = 0;
+let computerScore = 0;
+
+function computerplay() {
   let num = Math.floor(Math.random() * 3);
   if (num === 0) {
     return "ROCK";
   } else if (num === 1) {
-    return "PAPER"
+    return "PAPER";
   } else {
-    return "SCISSORS"
+    return "SCISSORS";
   }
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection,computerSelection) {
   if (playerSelection === computerSelection) {
-    alert("It's A Tie.");
+      return "It's a Tie.";
   } else if (
-    (playerSelection === "ROCK" && computerSelection === "SCISSORS") ||
-    (playerSelection === "PAPER" && computerSelection === "ROCK") ||
-    (playerSelection === "SCISSORS" && computerSelection === "PAPER")
+      (playerSelection === "ROCK" && computerSelection === "SCISSORS") ||
+      (playerSelection === "PAPER" && computerSelection === "ROCK") ||
+      (playerSelection === "SCISSORS" && computerSelection === "PAPER")
   ) {
-    alert("You Won.");
+      return "You Win.";
   } else if (
     (playerSelection === "ROCK" && computerSelection === "PAPER") ||
     (playerSelection === "PAPER" && computerSelection === "SCISSORS") ||
     (playerSelection === "SCISSORS" && computerSelection === "ROCK")
   ) {
-    alert("Computer Won.")
+      return "Computer Wins.";
   }
 }
 
-let computerScore = 0;
-let playerScore = 0;
+function score() {
+  if (playRound(playerSelection,computerSelection) === "You Win.") {
+    return ++playerScore;
+  } else if (playRound(playerSelection,computerSelection) === "Computer Wins.") {
+    return ++computerScore;
+  }
+}
 
-function playerScorePerRound(playerScore, playerSelection, computerSelection) {
-  if (
-      (playerSelection === "ROCK" && computerSelection === "SCISSORS") ||
-      (playerSelection === "PAPER" && computerSelection === "ROCK") ||
-      (playerSelection === "SCISSORS" && computerSelection === "PAPER")
-    ) {
-      ++playerScore
+function game() {
+  do {
+    playerSelection = prompt("Enter Rock, Paper or Scissors. (Click cancel if you don't wanna play the game)").toUpperCase();
+    computerSelection = computerplay();
+    if (playerSelection === "ROCK" || playerSelection === "PAPER" || playerSelection === "SCISSORS") {
+      playRound(playerSelection,computerSelection);
+      score();
+      alert(playRound(playerSelection,computerSelection) + " " + "Computer Score: " + computerScore + ". " + "Player Score: " + playerScore);
+    } else {
+      continue;
     }
-  return playerScore;
-}
+  } while (computerScore < 5 && playerScore < 5);
 
-function computerScorePerRound(computerScore, playerSelection, computerSelection) {
-  if (
-      (playerSelection === "ROCK" && computerSelection === "PAPER") ||
-      (playerSelection === "PAPER" && computerSelection === "SCISSORS") ||
-      (playerSelection === "SCISSORS" && computerSelection === "ROCK")
-    ) {
-      ++computerScore
-  }
-  return computerScore;
-}
-
-function totalResult() {
-  let totalScoreC = computerScorePerRound(computerScore, playerSelection1, computerSelection1) +
-                    computerScorePerRound(computerScore, playerSelection2, computerSelection2) +
-                    computerScorePerRound(computerScore, playerSelection3, computerSelection3) +
-                    computerScorePerRound(computerScore, playerSelection4, computerSelection4) +
-                    computerScorePerRound(computerScore, playerSelection5, computerSelection5);
-
-  let totalScoreP = playerScorePerRound(playerScore, playerSelection1, computerSelection1) +
-                    playerScorePerRound(playerScore, playerSelection2, computerSelection2) +
-                    playerScorePerRound(playerScore, playerSelection3, computerSelection3) +
-                    playerScorePerRound(playerScore, playerSelection4, computerSelection4) +
-                    playerScorePerRound(playerScore, playerSelection5, computerSelection5);
-
-  if (totalScoreC > totalScoreP) {
-    alert("Computer Score is " + totalScoreC + "." + " Player Score is " + totalScoreP + "." + " You Lost. Computer Won.");
-  } else if (totalScoreC < totalScoreP) {
-    alert("Computer Score is " + totalScoreC + "." + " Player Score is " + totalScoreP + "." + " You Won.");
+  alert("Final Scores: Computer = " + computerScore + "  " + "Player = " + playerScore + " .");
+  if (computerScore > playerScore) {
+    alert("Computer Wins the Game.");
   } else {
-    alert("Computer Score is " + totalScoreC + "." + " Player Score is " + totalScoreP + "." + " It's A Tie.");
+    alert("You Win the Game.");
   }
 }
 
-const playerSelection1 = prompt("Write Rock,Paper or Scissors").toUpperCase();
-const computerSelection1 = computerPlay();
-
-playRound(playerSelection1, computerSelection1);
-
-const playerSelection2 = prompt("Write Rock,Paper or Scissors").toUpperCase();
-const computerSelection2 = computerPlay();
-
-playRound(playerSelection2, computerSelection2);
-
-const playerSelection3 = prompt("Write Rock,Paper or Scissors").toUpperCase();
-const computerSelection3 = computerPlay();
-
-playRound(playerSelection3, computerSelection3);
-
-const playerSelection4 = prompt("Write Rock,Paper or Scissors").toUpperCase();
-const computerSelection4 = computerPlay();
-
-playRound(playerSelection4, computerSelection4);
-
-const playerSelection5 = prompt("Write Rock,Paper or Scissors").toUpperCase();
-const computerSelection5 = computerPlay();
-
-playRound(playerSelection5, computerSelection5);
-
-
-totalResult();
+game();
