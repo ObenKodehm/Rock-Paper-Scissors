@@ -1,0 +1,227 @@
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #171716;
+}
+
+p {
+  font-size: 23px;
+  font-weight: 500;
+  color: #FFF;
+  text-align: center;
+}
+
+span {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 125px;
+}
+
+
+/* MAIN CONTENT */
+
+h1 {
+  text-align: center;
+  font-size: 55px;
+  color: #0DFF18;
+  font-family: 'Crimson Pro', serif;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px 5px #0DFF18;
+  padding: 30px 0 20px 0;
+}
+
+.players {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 30px;
+}
+
+h2 {
+  display: inline;
+  text-align: center;
+  width: 30%;
+  font-size: 50px;
+  color: #FFF;
+  font-family: 'Crimson Pro', serif;
+}
+
+
+/* CONTROLS */
+
+.controls {
+  height: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.player-controls {
+  height: 180px;
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid #FFF;
+}
+
+.player-rock {
+  background-image: url("../Img/rock.png");
+  background-size: cover;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.player-paper {
+  background-image: url("../Img/paper.png");
+  background-size: cover;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.player-scissors {
+  background-image: url("../Img/scissors.png");
+  background-size: cover;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.comp-controls {
+  height: 180px;
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid #FFF;
+}
+
+.comp-rock {
+  background-image: url("../Img/rock.png");
+  background-size: cover;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.comp-paper {
+  background-image: url("../Img/paper.png");
+  background-size: cover;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.comp-scissors {
+  background-image: url("../Img/scissors.png");
+  background-size: cover;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+
+  /* Hover Effects */
+
+.player-rock:hover, .player-paper:hover, .player-scissors:hover {
+  box-shadow: 1px 1px 10px 0 yellow;
+  transform: scale(1.08);
+}
+
+
+/* SCORES */
+
+.scores {
+  padding-top: 20px;
+}
+
+h3 {
+  font-family: 'Crimson Pro', serif;
+  font-size: 55px;
+  color: #FFF;
+  text-align: center;
+}
+
+.score {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+h4 {
+  font-size: 55px;
+  color: #FFF;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h5 {
+  font-size: 30px;
+  color: yellow;
+  text-align: center;
+  padding-top: 20px;
+}
+
+button {
+  display: none;
+  margin-top: 20px;
+  font-size: 20px;
+  color: #FFF;
+  background-color: #171716;
+  border: 2px solid #FFF;
+  width: 120px;
+  height: 50px;
+  cursor: pointer;
+}
+
+/* FOOTER */
+
+footer {
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  height: 50px;
+}
+
+ul {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  list-style-type: none;
+}
+
+li {
+  text-align: center;
+  font-size: 22px;
+  color: #FFF;
+  line-height: 1.3;
+  font-family: 'Crimson Pro', serif;
+}
+
+li i {
+  color: #0DFF18;
+}
+
+a {
+  text-decoration: underline;
+  color: #FFF;
+}
+
+a:hover {
+  color: #0DFF18;
+}
