@@ -2,14 +2,19 @@ let playerSelection;
 let computerSelection;
 let playerScore = 0;
 let computerScore = 0;
-const playerControls = document.querySelectorAll('#Rock, #Paper, #Scissors');
-const compControls = document.querySelectorAll('.comp-rock, .comp-paper, .comp-scissors');
-const controls = document.querySelectorAll('.player-rock, .player-paper, .player-scissors, .comp-rock, .comp-paper, .comp-scissors');
-const playerResult = document.querySelector('#player-score');
-const computerResult = document.querySelector('#comp-score');
 const result = document.querySelector('h5');
-const playAgain = document.querySelector('#btn');
+const resultDiv = document.querySelector('.result');
+const resultFinal = document.querySelector('h6');
+const main = document.querySelector('main');
 
+let playerName = prompt("Enter your Name.");
+const player = document.querySelector('.player');
+if (playerName) {
+  player.textContent = playerName;
+}
+
+
+const compControls = document.querySelectorAll('.comp-rock, .comp-paper, .comp-scissors');
 function computerplay() {
   let num = Math.floor(Math.random() * 3);
   if (num === 0) {
@@ -27,40 +32,32 @@ function computerplay() {
   }
 }
 
+
+const playerResult = document.querySelector('#player-score');
+const computerResult = document.querySelector('#comp-score');
 function playRound(playerSelection,computerSelection) {
   if (playerSelection === computerSelection) {
-    return "Tie.";
+    result.textContent = "It's a Tie.";
   } else if (
     (playerSelection === "Rock" && computerSelection === "Scissors") ||
     (playerSelection === "Paper" && computerSelection === "Rock") ||
     (playerSelection === "Scissors" && computerSelection === "Paper")
   ) {
-    return "Player Wins.";
+    playerResult.textContent = ++playerScore;
+    result.textContent = "Player Wins.";
   } else if (
     (playerSelection === "Rock" && computerSelection === "Paper") ||
     (playerSelection === "Paper" && computerSelection === "Scissors") ||
     (playerSelection === "Scissors" && computerSelection === "Rock")
   ) {
-    return "Computer Wins.";
-  }
-}
-
-function score() {
-  if (playRound(playerSelection,computerSelection) === "Player Wins.") {
-    playerResult.textContent = ++playerScore;
-    result.textContent = "Player Wins.";
-  } else if (playRound(playerSelection,computerSelection) === "Computer Wins.") {
     computerResult.textContent = ++computerScore;
     result.textContent = "Computer Wins.";
-  } else if (playRound(playerSelection,computerSelection) === "Tie.") {
-    result.textContent = "It's a Tie.";
   }
 }
 
 function game() {
   computerSelection = computerplay();
   playRound(playerSelection,computerSelection);
-  score();
   gameEnd(playerScore,computerScore);
 }
 
@@ -68,18 +65,26 @@ function check(playerScore,computerScore) {
   return playerScore === 5 || computerScore === 5;
 }
 
+
+const playAgain = document.querySelector('#btn');
 function gameEnd(playerScore,computerScore) {
   if (check(playerScore,computerScore)) {
+    main.style.display = "none";
+    result.style.display = "none";
+    resultDiv.style.display = "flex";
     if (playerScore > computerScore) {
-      result.textContent = "Player Wins the Game.";
+      resultFinal.textContent = "Player Wins the Game.";
     } else {
-      result.textContent = "Computer Wins the Game.";
+      resultFinal.textContent = "Computer Wins the Game.";
     }
     playAgain.style.display = "block";
     playAgain.addEventListener('click', () => location.reload());
   }
 }
 
+
+const playerControls = document.querySelectorAll('#Rock, #Paper, #Scissors');
+const controls = document.querySelectorAll('.player-rock, .player-paper, .player-scissors, .comp-rock, .comp-paper, .comp-scissors');
 for (let i = 0; i < playerControls.length; i++) {
   playerControls[i].addEventListener('click', () => {
       for (let x = 0; x < controls.length; x++) {

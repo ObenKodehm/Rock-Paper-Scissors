@@ -16,7 +16,7 @@ span {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 125px;
+  width: 26%;
 }
 
 
@@ -54,6 +54,7 @@ h2 {
 
 .controls {
   height: 200px;
+  width: 100vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -163,18 +164,27 @@ h4 {
   color: #FFF;
 }
 
-.result {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 h5 {
+  padding-top: 40px;
   font-size: 30px;
   color: yellow;
   text-align: center;
-  padding-top: 20px;
+}
+
+.result {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  height: 300px;
+  padding-top: 40px;
+}
+
+h6 {
+  font-size: 50px;
+  color: yellow;
+  text-align: center;
 }
 
 button {
@@ -188,6 +198,7 @@ button {
   height: 50px;
   cursor: pointer;
 }
+
 
 /* FOOTER */
 
@@ -224,4 +235,41 @@ a {
 
 a:hover {
   color: #0DFF18;
+}
+
+
+/* Media Querys  */
+
+@media only screen and (max-width: 1000px) {
+  .comp-controls {
+    display: none;
+  }
+
+  .player-controls {
+    width: 60%;
+  }
+
+  .computer {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  h1, h2, h3, h4 {
+    font-size: 40px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+
+  footer {
+    display: none;
+  }
+
+  .player-rock, .player-paper, .player-scissors {
+    width: 70px;
+    height: 70px;
+  }
 }
